@@ -6,17 +6,17 @@ public class App {
         System.out.println("Enter a number: ");
         int firstNumber = input.nextInt();
         System.out.println("Enter another number: ");
-        int secondNumber = 0;
-        
+        int secondNumber = input.nextInt();
         
         int quotient = 0;
-        String printQuotient = " ";
-        try {
+        try{
             quotient = firstNumber / secondNumber;
-            printQuotient = " " + quotient;
-        } catch (ArithmeticException ex) {
+        }catch(ArithmeticException ex){
             System.out.println(ex.getMessage());
-            printQuotient = "Undefined";
+            System.out.println("Default answer of 0 used for quotient");
+        }finally{
+            System.out.println(String.format("The answer from division is %s", quotient));
         }
+        input.close();
     }
 }

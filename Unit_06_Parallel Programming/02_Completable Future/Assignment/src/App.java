@@ -1,18 +1,14 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        CompletableFuture<Double> ranNum = CompletableFuture.supplyAsync(
+            () -> Math.random()
+        );
+        CompletableFuture<Void> newRanNum = ranNum.thenAccept(s -> {
+            System.out.println(s * 2);
+        });
 
-        BiFunction<Integer, Integer, Integer> randoGenerator = (min, max) -> {
-            int size = max - min + 1;
-            double rando = size * Math.random();
-            return (int) Math.floor(rando);
-        };
-
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> randoGenerator.apply(0, 10));
-
-        System.out.println(future.get());
+        newRanNum.get();
     }
-
 }

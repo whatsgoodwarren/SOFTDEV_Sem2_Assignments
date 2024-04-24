@@ -4,6 +4,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         try (Scanner input = new Scanner(System.in)) {
 
+            System.out.println("Enter a number:");
             System.out.println("Enter a number");
             String number1 = input.next();
             System.out.println("Enter another number");
@@ -25,11 +26,11 @@ public class App {
                     throw new IntegerException("number2 is not an int");
                 }
 
+
             } catch (IntegerException intEX) {
                 System.out.println(intEX.getMessage());
             }
             System.out.println(number1Int * number2Int);
-
         }
     }
 }
